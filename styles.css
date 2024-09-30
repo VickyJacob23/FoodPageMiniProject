@@ -11,11 +11,15 @@ body{
 header{
     background-color:#34495e;
     color:#fff;
+}
+.navbar{
+    min-height:70px;
     display:flex;
     justify-content:space-between;
     align-items:center;
+    padding:0 2em;
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
 }
-
 header h1{
     font-size:2.5rem;
     font-weight:900;
@@ -24,16 +28,37 @@ header h1 span{
     color:#DC5F00;
     font-size:2.7rem;
 }
-
-ul li{
-    display:inline-block;
-    margin-right:2em;
+li{
     list-style:none;
+}
+
+.nav-menu{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:2em;
 }
 a{
     color:#DC5F00;
     font-weight:500;
     text-decoration:none;
+}
+a:hover{
+    color:#f1c40f;
+    transition:color 0.3s ease;
+}
+.hamburger{
+    display:none;
+    cursor:pointer;
+}
+.bar{
+    display:block;
+    width:25px;
+    height:3px;
+    margin:5px auto;
+    webkit-transition:all 0.3s ease-in-out;
+    transition:all 0.3s ease-in-out;
+    background-color:#DC5F00;
 }
 .hero-img{
     background-image:url(images/food-ima4.jpg);
@@ -126,6 +151,7 @@ button:hover{
     max-width:70%;
     margin-top:1rem;
     line-height:1;
+    font-weight:800;
     color:#DC5F00;
 }
 .products{
@@ -219,6 +245,37 @@ button:hover{
     header h1 span{
         font-size:2rem;
     }
+    .hamburger{
+        display:block;
+    }
+    .hamburger.active .bar:nth-child(2){
+        opacity:0;
+    }
+    .hamburger.active .bar:nth-child(1){
+        transform:translateY(8px) rotate(45deg);
+    }
+    .hamburger.active .bar:nth-child(3){
+        transform:translateY(-8px) rotate(-45deg);
+    }
+    .nav-menu{
+        position:fixed;
+        z-index: 1000;
+        left:-100%;
+        top:70px;
+        gap:0;
+        background-color:#34495e;
+        color:#fff;
+        flex-direction:column;
+        width:100%;
+        text-align:center;
+        transition: 0.3s
+    }
+    .menu-item{
+        margin:16px 0;
+    }
+    .nav-menu.active{
+        left:0;
+    }
     .hero-wrapper h1{
         font-size:2rem;
     }
@@ -239,7 +296,7 @@ button:hover{
     header h1 span{
         font-size:1.5rem;
     }
-    ul li{
+    .nav-menu{
         margin-right:1em;
     }
     .hero-wrapper h1{
